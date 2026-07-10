@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mechanical Design Engineer portfolio for Kadir Gelincik, specializing in bespoke machinery, automation, and layout optimization.">
     <title>Kadir Gelincik | Mechanical Design Engineer Portfolio</title>
     <style>
         :root {
@@ -24,6 +25,10 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -84,6 +89,7 @@
             padding: 8rem 2rem 6rem 2rem;
             position: relative;
             overflow: hidden;
+            scroll-margin-top: 70px;
         }
 
         header::before {
@@ -227,6 +233,7 @@
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            scroll-margin-top: 70px;
         }
 
         .section-header {
@@ -463,6 +470,7 @@
             flex-direction: column;
             box-shadow: 0 1px 3px rgba(0,0,0,0.01);
             transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer; /* Makes it clear the card is clickable */
         }
 
         .project-card:hover {
@@ -470,12 +478,13 @@
             box-shadow: 0 12px 20px -8px rgba(0,0,0,0.08);
         }
 
+        /* Updated Project Image styles for Background Images */
         .project-img {
-            background-color: var(--slate-900); /* Dark background to match your theme */
-            background-size: contain; /* This scales the image to fit entirely inside the box */
-            background-position: center; /* Centers the image */
-            background-repeat: no-repeat; /* Prevents the image from repeating */
-            height: 220px; /* Slightly taller to accommodate the slide aspect ratio */
+            background-color: var(--slate-900);
+            background-size: contain; 
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 220px; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -490,14 +499,18 @@
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 1px;
-            color: var(--slate-700);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+            z-index: 1;
         }
 
         .project-img h4 {
             font-size: 1.15rem;
-            color: var(--slate-900);
+            color: #ffffff;
             font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+            z-index: 1;
         }
 
         .project-content {
@@ -514,70 +527,49 @@
             margin-bottom: 1rem;
         }
 
-        /* Interactive Engineering Widget Section */
-        .widget-bg {
-            background-color: var(--slate-900);
-            color: var(--white);
-            border-radius: 12px;
-            padding: 3rem;
-        }
-
-        .widget-bg h2 { color: var(--white); }
-
-        .widget-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+        /* Modal (Lightbox) Styles */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(5px);
             align-items: center;
-            margin-top: 2rem;
-        }
-
-        .widget-controls {
-            display: flex;
+            justify-content: center;
             flex-direction: column;
-            gap: 1.25rem;
         }
 
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .input-group label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #94a3b8;
-        }
-
-        .input-group input {
-            padding: 0.75rem;
-            border-radius: 6px;
-            border: 1px solid var(--slate-700);
-            background-color: var(--slate-800);
-            color: var(--white);
-            font-size: 1rem;
-        }
-
-        .widget-display {
-            background-color: var(--slate-800);
-            border: 1px solid var(--slate-700);
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh; 
+            object-fit: contain;
             border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
         }
 
-        .widget-display .value {
-            font-size: 3rem;
-            font-weight: 800;
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f5f9;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
             color: var(--blue-500);
-            margin: 0.5rem 0;
         }
 
-        .widget-display .formula {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
-            color: #94a3b8;
+        @keyframes zoomIn {
+            from {transform: scale(0.9); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
         }
 
         /* Education Layout */
@@ -632,62 +624,11 @@
 
         @media (max-width: 968px) {
             .hero-container { grid-template-columns: 1fr; gap: 2rem; }
-            
-        }
-        /* Modal (Lightbox) Styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 2000; /* Sits on top of your navbar */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90vh; /* 90% of the screen height */
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            animation: zoomIn 0.3s ease;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #f1f5f9;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-modal:hover {
-            color: var(--blue-500);
-        }
-
-        @keyframes zoomIn {
-            from {transform: scale(0.9); opacity: 0;}
-            to {transform: scale(1); opacity: 1;}
-        }
-
-        /* Makes sure the portfolio cards show a hand pointer on hover */
-        .project-card {
-            cursor: pointer; 
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Menu -->
     <nav>
         <div class="nav-container">
             <div class="logo">Kadir<span>Gelincik</span></div>
@@ -697,13 +638,11 @@
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
-               
                 <li><a href="#education">Education</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Frame -->
     <header id="about">
         <div class="hero-container">
             <div class="hero-text">
@@ -722,22 +661,20 @@
                 </div>
             </div>
 
-            <!-- Asset Registry Verification Box -->
             <div class="action-container">
                 <h3>Verified Applications Links</h3>
                 <div class="btn-group">
                     <a class="btn btn-primary" href="001-Resume-Kadir_Gelincik-1.pdf" download>
-                        📥 Download CV (001-Resume-Kadir_Gelincik-1.pdf)
+                        📥 Download CV
                     </a>
                     <a class="btn btn-secondary" href="Portfolio_KadirGelincik_.pdf" download>
-                        📁 Download Portfolio (Portfolio_KadirGelincik_.pdf)
+                        📁 Download Portfolio
                     </a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Technical Core Competencies -->
     <section id="skills">
         <div class="section-header">
             <h2>Technical Core Competencies</h2>
@@ -778,7 +715,6 @@
         </div>
     </section>
 
-    <!-- Verifiable Certifications Section -->
     <section id="certifications">
         <div class="section-header">
             <h2>Dassault Systèmes Professional Credentials</h2>
@@ -786,7 +722,6 @@
         </div>
         <div class="cert-grid">
             
-            <!-- Cert 1: Design Professional -->
             <div class="cert-card pro">
                 <div>
                     <span class="cert-badge pro-tag">CSWP Professional</span>
@@ -798,7 +733,6 @@
                 </div>
             </div>
 
-            <!-- Cert 2: Weldments Professional -->
             <div class="cert-card pro">
                 <div>
                     <span class="cert-badge pro-tag">CSWP Weldments</span>
@@ -810,7 +744,6 @@
                 </div>
             </div>
 
-            <!-- Cert 3: Sheet Metal Professional -->
             <div class="cert-card pro">
                 <div>
                     <span class="cert-badge pro-tag">CSWP Sheet Metal</span>
@@ -822,7 +755,6 @@
                 </div>
             </div>
 
-            <!-- Cert 4: Design Associate -->
             <div class="cert-card assoc">
                 <div>
                     <span class="cert-badge assoc-tag">CSWA Associate</span>
@@ -837,7 +769,6 @@
         </div>
     </section>
 
-    <!-- Work Experience Timeline -->
     <section id="experience">
         <div class="section-header">
             <h2>Professional Experience</h2>
@@ -893,11 +824,10 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section id="portfolio">
         <div class="section-header">
             <h2>Design Portfolio</h2>
-            <p>Verified structural design references extracted directly from portfolio datasets.</p>
+            <p>Verified structural design references extracted directly from portfolio datasets. Click any card to expand.</p>
         </div>
 
         <div class="filter-menu">
@@ -907,20 +837,20 @@
             <button class="filter-btn" onclick="applyFilter('components')">Technical Prints</button>
         </div>
 
-  <div class="portfolio-grid">
+        <div class="portfolio-grid">
             
-            <div class="project-card" data-cat="machinery"> onclick="openModal('images/Portfolio_KadirGelincik__Page_03.jpg')">
+            <div class="project-card" data-cat="machinery" onclick="openModal('images/Portfolio_KadirGelincik__Page_03.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_03.jpg');">
                     <span>Industrial Assembly</span>
                     <h4>Industrial Rasper Assembly</h4>
                 </div>
-                <div class="project-content"> 
+                <div class="project-content">
                     <p class="project-desc">Complete multi-rotor shredding configuration built using DFM verification loops and field load inspections.</p>
                     <span class="tag">SOLIDWORKS / Weldments</span>
                 </div>
             </div>
 
-            <div class="project-card" data-cat="layouts"> onclick="openModal('images/Portfolio_KadirGelincik__Page_04.jpg')">
+            <div class="project-card" data-cat="layouts" onclick="openModal('images/Portfolio_KadirGelincik__Page_04.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_04.jpg');">
                     <span>Plant Architecture</span>
                     <h4>5 Ton/h Powder Plant Design</h4>
@@ -931,7 +861,7 @@
                 </div>
             </div>
 
-            <div class="project-card" data-cat="components"> onclick="openModal('images/Portfolio_KadirGelincik__Page_09.jpg')">
+            <div class="project-card" data-cat="components" onclick="openModal('images/Portfolio_KadirGelincik__Page_09.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_09.jpg');">
                     <span>Component Print</span>
                     <h4>Bucket Elevator Drive Shaft</h4>
@@ -942,7 +872,7 @@
                 </div>
             </div>
 
-            <div class="project-card" data-cat="machinery"> onclick="openModal('images/Portfolio_KadirGelincik__Page_06.jpg')">
+            <div class="project-card" data-cat="machinery" onclick="openModal('images/Portfolio_KadirGelincik__Page_06.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_06.jpg');">
                     <span>Subsystem Design</span>
                     <h4>Air Purged Mechanical Seal</h4>
@@ -953,7 +883,7 @@
                 </div>
             </div>
 
-            <div class="project-card" data-cat="layouts"> onclick="openModal('images/Portfolio_KadirGelincik__Page_08.jpg')">
+            <div class="project-card" data-cat="layouts" onclick="openModal('images/Portfolio_KadirGelincik__Page_08.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_08.jpg');">
                     <span>Pneumatic Layout</span>
                     <h4>Semi-Dense Phase Conveyor Layout</h4>
@@ -964,7 +894,7 @@
                 </div>
             </div>
 
-            <div class="project-card" data-cat="components"> onclick="openModal('images/Portfolio_KadirGelincik__Page_10.jpg')">
+            <div class="project-card" data-cat="components" onclick="openModal('images/Portfolio_KadirGelincik__Page_10.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_10.jpg');">
                     <span>Assembly Blueprint</span>
                     <h4>Traction Rim Tech Drawing</h4>
@@ -978,9 +908,6 @@
         </div>
     </section>
 
-    <!-- Engineering Logic - Interactive Calculation Widget Section -->
-  
-    <!-- Education Matrix Section -->
     <section id="education">
         <div class="section-header">
             <h2>Education & Qualifications</h2>
@@ -1015,17 +942,18 @@
         </div>
     </section>
 
-    <!-- Footer Structure -->
     <footer>
         <p>&copy; 2026 Kadir Gelincik. Designed for UK Mechanical Engineering Application Pipelines.</p>
-        <p>Cardiff, Wales, UK. Document Registry Matches "001-Resume-Kadir_Gelincik-1.pdf" and "Portfolio_KadirGelincik_.pdf".</p>
+        <p>Cardiff, Wales, UK.</p>
     </footer>
-<div id="imageModal" class="modal">
+
+    <div id="imageModal" class="modal">
         <span class="close-modal" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImage" alt="Portfolio Zoom">
     </div>
-    <!-- Interactive Filtering & Math Script Modules -->
+
     <script>
+        // Filter Portfolio Items
         function applyFilter(cat) {
             const items = document.querySelectorAll('.project-card');
             const buttons = document.querySelectorAll('.filter-btn');
@@ -1041,7 +969,8 @@
                 }
             });
         }
-// Open the Modal and set the correct image source
+
+        // Open the Modal and set the correct image source
         function openModal(imageSrc) {
             const modal = document.getElementById("imageModal");
             const modalImg = document.getElementById("modalImage");
@@ -1061,7 +990,6 @@
                 closeModal();
             }
         }
-      
     </script>
 </body>
 </html>
