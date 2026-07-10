@@ -632,7 +632,56 @@
 
         @media (max-width: 968px) {
             .hero-container { grid-template-columns: 1fr; gap: 2rem; }
-            .widget-container { grid-template-columns: 1fr; gap: 2rem; }
+            
+        }
+        /* Modal (Lightbox) Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 2000; /* Sits on top of your navbar */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh; /* 90% of the screen height */
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f5f9;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--blue-500);
+        }
+
+        @keyframes zoomIn {
+            from {transform: scale(0.9); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        /* Makes sure the portfolio cards show a hand pointer on hover */
+        .project-card {
+            cursor: pointer; 
         }
     </style>
 </head>
@@ -648,7 +697,7 @@
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#calc">Engineering Logic</a></li>
+               
                 <li><a href="#education">Education</a></li>
             </ul>
         </div>
@@ -860,18 +909,18 @@
 
   <div class="portfolio-grid">
             
-            <div class="project-card" data-cat="machinery">
+            <div class="project-card" data-cat="machinery"> onclick="openModal('images/Portfolio_KadirGelincik__Page_03.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_03.jpg');">
                     <span>Industrial Assembly</span>
                     <h4>Industrial Rasper Assembly</h4>
                 </div>
-                <div class="project-content">
+                <div class="project-content"> 
                     <p class="project-desc">Complete multi-rotor shredding configuration built using DFM verification loops and field load inspections.</p>
                     <span class="tag">SOLIDWORKS / Weldments</span>
                 </div>
             </div>
 
-            <div class="project-card" data-cat="layouts">
+            <div class="project-card" data-cat="layouts"> onclick="openModal('images/Portfolio_KadirGelincik__Page_04.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_04.jpg');">
                     <span>Plant Architecture</span>
                     <h4>5 Ton/h Powder Plant Design</h4>
@@ -882,7 +931,7 @@
                 </div>
             </div>
 
-            <div class="project-card" data-cat="components">
+            <div class="project-card" data-cat="components"> onclick="openModal('images/Portfolio_KadirGelincik__Page_09.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_09.jpg');">
                     <span>Component Print</span>
                     <h4>Bucket Elevator Drive Shaft</h4>
@@ -893,7 +942,7 @@
                 </div>
             </div>
 
-            <div class="project-card" data-cat="machinery">
+            <div class="project-card" data-cat="machinery"> onclick="openModal('images/Portfolio_KadirGelincik__Page_06.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_06.jpg');">
                     <span>Subsystem Design</span>
                     <h4>Air Purged Mechanical Seal</h4>
@@ -904,7 +953,7 @@
                 </div>
             </div>
 
-            <div class="project-card" data-cat="layouts">
+            <div class="project-card" data-cat="layouts"> onclick="openModal('images/Portfolio_KadirGelincik__Page_08.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_08.jpg');">
                     <span>Pneumatic Layout</span>
                     <h4>Semi-Dense Phase Conveyor Layout</h4>
@@ -915,7 +964,7 @@
                 </div>
             </div>
 
-            <div class="project-card" data-cat="components">
+            <div class="project-card" data-cat="components"> onclick="openModal('images/Portfolio_KadirGelincik__Page_10.jpg')">
                 <div class="project-img" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('images/Portfolio_KadirGelincik__Page_10.jpg');">
                     <span>Assembly Blueprint</span>
                     <h4>Traction Rim Tech Drawing</h4>
@@ -930,32 +979,7 @@
     </section>
 
     <!-- Engineering Logic - Interactive Calculation Widget Section -->
-    <section id="calc">
-        <div class="widget-bg">
-            <div class="section-header">
-                <h2 style="color: white;">Interactive Engineering Validation</h2>
-                <p style="color: #94a3b8;">Demonstrating digital implementation skills: Real-time shaft torque calculation module.</p>
-            </div>
-            <div class="widget-container">
-                <div class="widget-controls">
-                    <div class="input-group">
-                        <label for="powerInput">Motor Operational Power (kW)</label>
-                        <input type="number" id="powerInput" value="45" oninput="calculateTorque()">
-                    </div>
-                    <div class="input-group">
-                        <label for="speedInput">Shaft Rotational Speed (RPM)</label>
-                        <input type="number" id="speedInput" value="1450" oninput="calculateTorque()">
-                    </div>
-                </div>
-                <div class="widget-display">
-                    <label style="font-size: 0.85rem; font-weight: 600; color: #94a3b8; text-transform: uppercase;">Resulting Operational Torque</label>
-                    <div class="value" id="torqueResult">296.34 N·m</div>
-                    <div class="formula">T = (Power * 9550) / RPM</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+  
     <!-- Education Matrix Section -->
     <section id="education">
         <div class="section-header">
@@ -996,7 +1020,10 @@
         <p>&copy; 2026 Kadir Gelincik. Designed for UK Mechanical Engineering Application Pipelines.</p>
         <p>Cardiff, Wales, UK. Document Registry Matches "001-Resume-Kadir_Gelincik-1.pdf" and "Portfolio_KadirGelincik_.pdf".</p>
     </footer>
-
+<div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Portfolio Zoom">
+    </div>
     <!-- Interactive Filtering & Math Script Modules -->
     <script>
         function applyFilter(cat) {
@@ -1014,19 +1041,27 @@
                 }
             });
         }
+// Open the Modal and set the correct image source
+        function openModal(imageSrc) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            modalImg.src = imageSrc;
+            modal.style.display = "flex";
+        }
 
-        function calculateTorque() {
-            const power = parseFloat(document.getElementById('powerInput').value) || 0;
-            const speed = parseFloat(document.getElementById('speedInput').value) || 0;
-            const resultBox = document.getElementById('torqueResult');
+        // Close the Modal
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
 
-            if(speed > 0) {
-                const torque = (power * 9550) / speed;
-                resultBox.innerText = torque.toFixed(2) + " N·m";
-            } else {
-                resultBox.innerText = "0.00 N·m";
+        // Close modal if the user clicks anywhere in the dark background outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById("imageModal");
+            if (event.target === modal) {
+                closeModal();
             }
         }
+      
     </script>
 </body>
 </html>
