@@ -3,140 +3,571 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kadir Gelincik | Mechanical Design Engineer</title>
+    <title>Kadir Gelincik | Mechanical Design Engineer Portfolio</title>
     <style>
-        /* --- GLOBAL BASE --- */
+        /* --- GLOBAL VARIABLES & BASE STYLES --- */
         :root {
             --slate-900: #0f172a;
-            --beige-bg: #f5f0e6;
-            --lime-accent: #84cc16;
-            --border-color: #d1d5db;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-100: #f1f5f9;
+            --blue-600: #2563eb;
+            --blue-500: #3b82f6;
+            --emerald-500: #10b981;
+            --lime-500: #84cc16; /* New Lime Green Accent */
+            --beige-bg: #f7f5f0; /* New Warm Beige Background */
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: #f8fafc; color: #334155; line-height: 1.5; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--slate-700);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
         /* --- NAVIGATION --- */
-        nav { background: var(--slate-900); padding: 1rem 2rem; color: white; display: flex; justify-content: space-between; align-items: center; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
-
-        /* --- HERO --- */
-        header { background: var(--slate-900); color: white; padding: 4rem 2rem; }
-        .hero-text { max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-
-        /* --- PORTFOLIO SECTION (MATCHING YOUR IMAGE) --- */
-        #portfolio { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        
-        .project-card { 
-            background-color: var(--beige-bg); 
-            border: 1px solid var(--border-color); 
-            display: flex; 
-            flex-direction: column; 
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .img-area { 
-            height: 200px; 
-            background-color: #cbd5e1; /* Neutral area where your photo would go */
-            position: relative; 
-            border-bottom: 4px solid var(--lime-accent); 
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
         }
 
-        .banner { 
-            position: absolute; 
-            top: 20px; 
-            left: 0; 
-            background: var(--slate-900); 
-            color: white; 
-            padding: 10px 15px; 
-            width: 90%; 
-            font-size: 0.85rem; 
+        .logo {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--blue-500); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        /* --- HERO SECTION --- */
+        header {
+            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .badge.accent {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--emerald-500);
+            color: #34d399;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Action Buttons */
+        .action-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .action-container h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #94a3b8;
             font-weight: 600;
+            text-transform: uppercase;
         }
 
-        .green-tab { 
-            position: absolute; 
-            top: -10px; 
-            right: 15px; 
-            width: 20px; 
-            height: 15px; 
-            background: var(--lime-accent); 
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
-        .text-area { padding: 20px; }
-        .text-area h4 { margin-bottom: 8px; font-size: 1.1rem; color: #1e293b; }
-        .text-area p { font-size: 0.9rem; color: #475569; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
 
-        /* --- OTHER SECTIONS --- */
-        section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-        .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-        .cert-card { background: white; padding: 1rem; border: 1px solid var(--border-color); font-size: 0.8rem; }
+        .btn-primary {
+            background-color: var(--blue-600);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- LAYOUT SECTIONS --- */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            color: var(--slate-900);
+            font-weight: 800;
+        }
+
+        /* --- SKILLS CARDS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            color: var(--slate-900);
+            margin-bottom: 1.25rem;
+            border-bottom: 2px solid var(--slate-100);
+            padding-bottom: 0.5rem;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--slate-100);
+            color: var(--slate-700);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* --- CERTIFICATIONS --- */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid var(--blue-500);
+        }
+
+        .cert-card.pro { border-top-color: var(--blue-600); }
+        .cert-card.assoc { border-top-color: var(--text-light); }
+
+        .cert-badge {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+
+        .cert-badge.pro-tag { background-color: rgba(37, 99, 235, 0.1); color: var(--blue-600); }
+        .cert-badge.assoc-tag { background-color: var(--slate-100); color: var(--slate-700); }
+
+        .cert-title { font-size: 1.15rem; font-weight: 700; color: var(--slate-900); margin-bottom: 0.5rem; }
+        .cert-meta { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
+        .cert-verify { background-color: var(--slate-100); padding: 0.5rem; border-radius: 6px; font-size: 0.8rem; border: 1px dashed var(--border); }
+        .cert-id { font-family: monospace; font-weight: 700; }
+
+        /* --- NEW PORTFOLIO GRID STYLES (FROM YOUR PHOTO) --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+        }
+
+        .project-card {
+            background-color: var(--beige-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e5e5e5;
+        }
+
+        .project-img {
+            position: relative;
+            height: 240px;
+            background-color: #ffffff;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 4px solid var(--lime-500); 
+        }
+
+        .project-banner {
+            position: absolute;
+            top: 1.5rem;
+            left: 5%;
+            width: 90%;
+            background-color: var(--slate-900);
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .project-banner::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 15px;
+            width: 16px;
+            height: 24px;
+            background-color: var(--lime-500);
+            z-index: 3;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-content h4 {
+            font-size: 1.1rem;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .project-content p {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        /* --- EXPERIENCE TIMELINE --- */
+        .timeline { position: relative; margin-left: 1rem; }
+        .timeline-item { position: relative; padding-left: 2.5rem; padding-bottom: 3.5rem; border-left: 2px solid var(--border); }
+        .timeline-item:last-child { border-left: 2px solid transparent; padding-bottom: 0; }
+        .timeline-dot { position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background-color: var(--blue-600); box-shadow: 0 0 0 4px var(--white); }
+        .timeline-meta { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+        .job-title { font-size: 1.35rem; font-weight: 700; color: var(--slate-900); }
+        .company-name { color: var(--blue-600); font-weight: 600; font-size: 1rem; }
+        .job-date { font-size: 0.85rem; font-weight: 600; background-color: var(--slate-100); padding: 0.25rem 0.75rem; border-radius: 4px; }
+        .job-details li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; font-size: 0.95rem; list-style: none;}
+        .job-details li::before { content: "→"; position: absolute; left: 0; color: var(--blue-500); }
+
+        /* --- INTERACTIVE WIDGET --- */
+        .widget-bg { background-color: var(--slate-900); color: var(--white); border-radius: 12px; padding: 3rem; }
+        .widget-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+        .input-group label { font-size: 0.85rem; font-weight: 600; color: #94a3b8; }
+        .input-group input { padding: 0.75rem; border-radius: 6px; border: 1px solid var(--slate-700); background-color: var(--slate-800); color: var(--white); font-size: 1rem; }
+        .widget-display { background-color: var(--slate-800); border: 1px solid var(--slate-700); border-radius: 8px; padding: 2rem; text-align: center; }
+        .widget-display .value { font-size: 3rem; font-weight: 800; color: var(--blue-500); margin: 0.5rem 0; }
+        .widget-display .formula { font-family: monospace; font-size: 0.85rem; color: #94a3b8; }
+
+        /* --- EDUCATION --- */
+        .edu-wrapper { display: flex; flex-direction: column; gap: 2rem; }
+        .edu-card h3 { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 1.25rem; }
+        .edu-card .institution { color: var(--blue-600); font-size: 1rem; font-weight: 600; margin-top: 0.25rem; }
+        .dissertation-panel { background-color: var(--slate-100); border-left: 4px solid var(--blue-600); padding: 1.25rem; margin-top: 1rem; border-radius: 0 6px 6px 0; }
+
+        footer { background-color: var(--slate-900); color: #64748b; padding: 3rem 2rem; text-align: center; border-top: 1px solid var(--slate-800); font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div>Kadir Gelincik</div>
-        <div class="nav-links">
-            <a href="#portfolio">Portfolio</a>
-            <a href="#certs">Certifications</a>
+        <div class="nav-container">
+            <div class="logo">Kadir<span>Gelincik</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#calc">Logic</a></li>
+            </ul>
         </div>
     </nav>
 
-    <header>
-        <div class="hero-text">
-            <h1>Mechanical Design Engineer</h1>
-            <p>Bespoke Machinery, Multi-Axis Automation & Layout Optimisation</p>
+    <header id="about">
+        <div class="hero-container">
+            <div class="hero-text">
+                <div class="hero-badges">
+                    <span class="badge accent">Available Now for Full-Time Roles</span>
+                    <span class="badge">Right to Work in the UK (No Sponsorship)</span>
+                    <span class="badge">Full UK Driving Licence</span>
+                </div>
+                <h1>Mechanical Design Engineer</h1>
+                <h2>Bespoke Machinery, Multi-Axis Automation & Layout Optimisation</h2>
+                
+                <div class="contact-info">
+                    <div class="contact-item">✉ <a href="mailto:kadirgelincik@outlook.com">kadirgelincik@outlook.com</a></div>
+                    <div class="contact-item">☎ <a href="tel:+447480953757">+44 7480 953757</a></div>
+                    <div class="contact-item">🔗 <a href="http://www.linkedin.com/in/kadirgelincik" target="_blank">linkedin.com/in/kadirgelincik</a></div>
+                </div>
+            </div>
+
+            <div class="action-container">
+                <h3>Verified Applications Links</h3>
+                <div class="btn-group">
+                    <a class="btn btn-primary" href="001-Resume-Kadir_Gelincik-1.pdf" download>📥 Download CV</a>
+                    <a class="btn btn-secondary" href="Portfolio_KadirGelincik_.pdf" download>📁 Download Portfolio</a>
+                </div>
+            </div>
         </div>
     </header>
 
+    <section id="skills">
+        <div class="section-header">
+            <h2>Technical Core Competencies</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="card">
+                <h3>CAD Design & Modelling</h3>
+                <div class="tag-container">
+                    <span class="tag">SOLIDWORKS Professional (CSWP)</span>
+                    <span class="tag">Sheet Metal Specialisation</span>
+                    <span class="tag">Weldments Specialisation</span>
+                    <span class="tag">AutoCAD</span>
+                    <span class="tag">NX</span>
+                    <span class="tag">CATIA</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Engineering Systems</h3>
+                <div class="tag-container">
+                    <span class="tag">SolidWorks PDM</span>
+                    <span class="tag">IFS ERP Infrastructure</span>
+                    <span class="tag">GD&T (ASME Y14.5)</span>
+                    <span class="tag">Ansys Simulation</span>
+                    <span class="tag">Renishaw CMM/Equator Data</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Industrial Domain Expertise</h3>
+                <div class="tag-container">
+                    <span class="tag">Bespoke Machinery Design</span>
+                    <span class="tag">Bulk Material Conveying</span>
+                    <span class="tag">Tire Recycling Processes</span>
+                    <span class="tag">ATEX Hazard Redesign</span>
+                    <span class="tag">On-Site Commissioning</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="section-header">
+            <h2>Dassault Systèmes Professional Credentials</h2>
+            <p>Official certifications completed via academic examination at Cardiff University, School of Engineering.</p>
+        </div>
+        <div class="cert-grid">
+            <div class="cert-card pro">
+                <div>
+                    <span class="cert-badge pro-tag">CSWP Professional</span>
+                    <div class="cert-title">SOLIDWORKS Mechanical Design Professional</div>
+                    <div class="cert-meta">Issued: 11 December 2025</div>
+                </div>
+                <div class="cert-verify">Verification ID: <span class="cert-id">C-MDH6SG3AUJ</span></div>
+            </div>
+            <div class="cert-card pro">
+                <div>
+                    <span class="cert-badge pro-tag">CSWP Weldments</span>
+                    <div class="cert-title">SOLIDWORKS Weldments Professional</div>
+                    <div class="cert-meta">Issued: 24 November 2025</div>
+                </div>
+                <div class="cert-verify">Verification ID: <span class="cert-id">C-LZ2TQKC7MX</span></div>
+            </div>
+            <div class="cert-card pro">
+                <div>
+                    <span class="cert-badge pro-tag">CSWP Sheet Metal</span>
+                    <div class="cert-title">SOLIDWORKS Sheet Metal Professional</div>
+                    <div class="cert-meta">Issued: 20 November 2025</div>
+                </div>
+                <div class="cert-verify">Verification ID: <span class="cert-id">C-8BH5MGSAWR</span></div>
+            </div>
+            <div class="cert-card assoc">
+                <div>
+                    <span class="cert-badge assoc-tag">CSWA Associate</span>
+                    <div class="cert-title">SOLIDWORKS Mechanical Design Associate</div>
+                    <div class="cert-meta">Issued: 16 November 2025</div>
+                </div>
+                <div class="cert-verify">Verification ID: <span class="cert-id">C-UPR4NZW5YT</span></div>
+            </div>
+        </div>
+    </section>
+
     <section id="portfolio">
-        <h2 style="margin-bottom: 2rem;">Design Portfolio</h2>
-        <div class="grid">
+        <div class="section-header">
+            <h2>Design Portfolio</h2>
+            <p>Verified structural design references extracted directly from portfolio datasets.</p>
+        </div>
+
+        <div class="portfolio-grid">
             
             <div class="project-card">
-                <div class="img-area">
-                    <div class="banner">3-Week On-Site installation For A UK-Based Company.
-                        <div class="green-tab"></div>
-                    </div>
+                <div class="project-img" style="background-image: url('images/installation.jpg');">
+                    <div class="project-banner">3-Week On-Site installation For A UK-Based Company.</div>
                 </div>
-                <div class="text-area">
+                <div class="project-content">
                     <h4>On-site installation</h4>
                     <p>Resolved technical design conflicts and supported delivery ahead of schedule.</p>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="img-area">
-                    <div class="banner">DFM Implementation & Field Inspection: Industrial Rasper Assembly
-                        <div class="green-tab"></div>
-                    </div>
+                <div class="project-img" style="background-image: url('images/rasper.jpg');">
+                    <div class="project-banner">DFM Implementation & Field Inspection: Industrial Rasper Assembly</div>
                 </div>
-                <div class="text-area">
+                <div class="project-content">
                     <h4>Industrial rasper assembly</h4>
                     <p>DfM implementation, inspection feedback, and production alignment.</p>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="img-area">
-                    <div class="banner">5 Ton/h Powder Plant Layout Design
-                        <div class="green-tab"></div>
-                    </div>
+                <div class="project-img" style="background-image: url('images/powder-plant.jpg');">
+                    <div class="project-banner">5 Ton/h Powder Plant Layout Design</div>
                 </div>
-                <div class="text-area">
+                <div class="project-content">
                     <h4>5 Ton/h powder plant</h4>
                     <p>Plant layout design for equipment positioning and process flow.</p>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="img-area">
-                    <div class="banner">Powder Mill Plant Layout Design.
-                        <div class="green-tab"></div>
-                    </div>
+                <div class="project-img" style="background-image: url('images/mill-layout.jpg');">
+                    <div class="project-banner">Powder Mill Plant Layout Design.</div>
                 </div>
-                <div class="text-area">
+                <div class="project-content">
                     <h4>Powder mill layout</h4>
                     <p>3D layout work for equipment access, assembly, and maintainability.</p>
                 </div>
@@ -145,14 +576,112 @@
         </div>
     </section>
 
-    <section id="certs">
-        <h2>Professional Credentials</h2>
-        <div class="cert-grid" style="margin-top: 1rem;">
-            <div class="cert-card">SOLIDWORKS Design Professional<br>ID: C-MDH6SG3AUJ</div>
-            <div class="cert-card">SOLIDWORKS Weldments<br>ID: C-LZ2TQKC7MX</div>
-            <div class="cert-card">SOLIDWORKS Sheet Metal<br>ID: C-8BH5MGSAWR</div>
+    <section id="experience">
+        <div class="section-header">
+            <h2>Professional Experience</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-meta">
+                    <div>
+                        <span class="job-title">Product Design Engineer</span> — <span class="company-name">Yıldız Endüstri (Izmir, Türkiye)</span>
+                    </div>
+                    <span class="job-date">Feb 2024 - Dec 2024</span>
+                </div>
+                <ul class="job-details">
+                    <li>Led a 3-week comprehensive on-site installation sequence for a manufacturing firm inside the United Kingdom, sorting design interfaces and running execution parameters 10% ahead of schedule.</li>
+                    <li>Executed detailed spatial configurations and layout site verifications inside active engineering facilities to iterate and fix physical layout conflicts.</li>
+                    <li>Evaluated production floor metrics to introduce optimized routines utilizing Design for Manufacture (DfM) criteria.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-meta">
+                    <div>
+                        <span class="job-title">Junior Product Design Engineer</span> — <span class="company-name">BSK Global (Izmir, Türkiye)</span>
+                    </div>
+                    <span class="job-date">Apr 2022 - Jan 2024</span>
+                </div>
+                <ul class="job-details">
+                    <li>Engineered industrial bucket elevators and complex mass conveying systems within SolidWorks PDM, driving calculations for drive units and mechanical structural loads.</li>
+                    <li>Acted as primary system design engineer for a cement processing facility deployment in Mexico.</li>
+                    <li>Configured product lifecycle data structures inside the enterprise IFS (ERP) environment.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
+    <section id="calc">
+        <div class="widget-bg">
+            <div class="section-header">
+                <h2 style="color: white;">Interactive Engineering Validation</h2>
+                <p style="color: #94a3b8;">Demonstrating digital implementation skills: Real-time shaft torque calculation module.</p>
+            </div>
+            <div class="widget-container">
+                <div class="widget-controls">
+                    <div class="input-group">
+                        <label for="powerInput">Motor Operational Power (kW)</label>
+                        <input type="number" id="powerInput" value="45" oninput="calculateTorque()">
+                    </div>
+                    <div class="input-group">
+                        <label for="speedInput">Shaft Rotational Speed (RPM)</label>
+                        <input type="number" id="speedInput" value="1450" oninput="calculateTorque()">
+                    </div>
+                </div>
+                <div class="widget-display">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #94a3b8; text-transform: uppercase;">Resulting Operational Torque</label>
+                    <div class="value" id="torqueResult">296.34 N·m</div>
+                    <div class="formula">T = (Power * 9550) / RPM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="section-header">
+            <h2>Education & Qualifications</h2>
+        </div>
+        <div class="edu-wrapper">
+            <div class="card edu-card">
+                <h3>
+                    <span>MSc Engineering Management</span>
+                    <span class="job-date">2025 - Current</span>
+                </h3>
+                <div class="institution">Cardiff University — United Kingdom</div>
+                <div class="dissertation-panel">
+                    <h4 style="color: var(--slate-900); margin-bottom: 0.5rem;">Dissertation Focus: Life Cycle Analysis of a Circular Manufacturing Process</h4>
+                    <p style="font-size: 0.9rem;">Quantifying energy tracking indicators, carbon footprint loops, and sustainability parameters mapping metal production scrap conversions into high-grade additive powders.</p>
+                </div>
+            </div>
+            <div class="card edu-card">
+                <h3>
+                    <span>BSc Mechanical Engineering</span>
+                    <span class="job-date">Sep 2016 - Mar 2022</span>
+                </h3>
+                <div class="institution">Çukurova University — Türkiye</div>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem;"><strong>Thesis:</strong> Designed, structuralized, and fabricated a working prototype configuration for a five-axis 3D printing manufacturing array.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Kadir Gelincik. Designed for UK Mechanical Engineering Application Pipelines.</p>
+    </footer>
+
+    <script>
+        function calculateTorque() {
+            const power = parseFloat(document.getElementById('powerInput').value) || 0;
+            const speed = parseFloat(document.getElementById('speedInput').value) || 0;
+            const resultBox = document.getElementById('torqueResult');
+
+            if(speed > 0) {
+                const torque = (power * 9550) / speed;
+                resultBox.innerText = torque.toFixed(2) + " N·m";
+            } else {
+                resultBox.innerText = "0.00 N·m";
+            }
+        }
+    </script>
 </body>
 </html>
