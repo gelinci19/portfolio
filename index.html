@@ -5,182 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kadir Gelincik | Mechanical Design Engineer</title>
     <style>
-        /* --- GLOBAL VARIABLES --- */
+        /* --- GLOBAL BASE --- */
         :root {
             --slate-900: #0f172a;
-            --slate-800: #1e293b;
-            --slate-700: #334155;
-            --slate-100: #f1f5f9;
-            --blue-600: #2563eb;
-            --blue-500: #3b82f6;
-            --emerald-500: #10b981;
-            --lime-500: #84cc16; 
-            --beige-bg: #f7f5f0;
-            --text-dark: #0f172a;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --border: #e2e8f0;
+            --beige-bg: #f5f0e6;
+            --lime-accent: #84cc16;
+            --border-color: #d1d5db;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #f8fafc; color: var(--slate-700); line-height: 1.6; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: #f8fafc; color: #334155; line-height: 1.5; }
 
         /* --- NAVIGATION --- */
-        nav { position: fixed; top: 0; width: 100%; background-color: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
-        .logo { color: var(--white); font-weight: 700; font-size: 1.25rem; }
-        .logo span { color: var(--blue-500); }
-        .nav-links { display: flex; list-style: none; gap: 1.5rem; }
-        .nav-links a { color: #94a3b8; text-decoration: none; font-size: 0.95rem; font-weight: 500; }
-        .nav-links a:hover { color: var(--white); }
+        nav { background: var(--slate-900); padding: 1rem 2rem; color: white; display: flex; justify-content: space-between; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
 
         /* --- HERO --- */
-        header { background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%); color: var(--white); padding: 8rem 2rem 6rem 2rem; }
-        .hero-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: center; }
-        .hero-text h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
-        .badge { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.85rem; margin-right: 0.5rem; }
-        .contact-info { margin: 2rem 0; display: flex; flex-wrap: wrap; gap: 1.5rem; }
-        .contact-info a { color: var(--white); text-decoration: none; }
+        header { background: var(--slate-900); color: white; padding: 4rem 2rem; }
+        .hero-text { max-width: 800px; margin: 0 auto; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
 
-        /* --- SECTIONS --- */
-        section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
-        .section-header { margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.25rem; color: var(--slate-900); }
+        /* --- PORTFOLIO SECTION (MATCHING YOUR IMAGE) --- */
+        #portfolio { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        
+        .project-card { 
+            background-color: var(--beige-bg); 
+            border: 1px solid var(--border-color); 
+            display: flex; 
+            flex-direction: column; 
+        }
 
-        /* --- DOCUMENT PORTAL (REPLACING IMAGE GRID) --- */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
-        .project-card { background-color: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.2s; cursor: pointer; }
-        .project-card:hover { transform: translateY(-5px); }
-        .doc-icon-area { height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
-        .project-content { padding: 1.5rem; text-align: center; }
-        .project-content h4 { margin-bottom: 0.5rem; }
+        .img-area { 
+            height: 200px; 
+            background-color: #cbd5e1; /* Neutral area where your photo would go */
+            position: relative; 
+            border-bottom: 4px solid var(--lime-accent); 
+        }
 
-        /* --- CERTIFICATIONS --- */
-        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-        .cert-card { background-color: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; border-top: 4px solid var(--blue-500); }
-        .cert-id { font-family: monospace; font-weight: 700; background: #f1f5f9; padding: 0.2rem 0.4rem; }
+        .banner { 
+            position: absolute; 
+            top: 20px; 
+            left: 0; 
+            background: var(--slate-900); 
+            color: white; 
+            padding: 10px 15px; 
+            width: 90%; 
+            font-size: 0.85rem; 
+            font-weight: 600;
+        }
 
-        /* --- WIDGET & FOOTER --- */
-        .widget-bg { background-color: var(--slate-900); color: var(--white); border-radius: 12px; padding: 3rem; }
-        footer { background-color: var(--slate-900); color: #64748b; padding: 3rem; text-align: center; }
+        .green-tab { 
+            position: absolute; 
+            top: -10px; 
+            right: 15px; 
+            width: 20px; 
+            height: 15px; 
+            background: var(--lime-accent); 
+        }
+
+        .text-area { padding: 20px; }
+        .text-area h4 { margin-bottom: 8px; font-size: 1.1rem; color: #1e293b; }
+        .text-area p { font-size: 0.9rem; color: #475569; }
+
+        /* --- OTHER SECTIONS --- */
+        section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
+        .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .cert-card { background: white; padding: 1rem; border: 1px solid var(--border-color); font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-container">
-            <div class="logo">Kadir<span>Gelincik</span></div>
-            <ul class="nav-links">
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-            </ul>
+        <div>Kadir Gelincik</div>
+        <div class="nav-links">
+            <a href="#portfolio">Portfolio</a>
+            <a href="#certs">Certifications</a>
         </div>
     </nav>
 
-    <header id="about">
-        <div class="hero-container">
-            <div class="hero-text">
-                <span class="badge">Available for Engineering Roles</span>
-                <h1>Mechanical Design Engineer</h1>
-                <h2>Bespoke Machinery & Layout Optimization</h2>
-                <div class="contact-info">
-                    <p>✉ kadirgelincik@outlook.com</p>
-                    <p>☎ +44 7480 953757</p>
-                </div>
-            </div>
+    <header>
+        <div class="hero-text">
+            <h1>Mechanical Design Engineer</h1>
+            <p>Bespoke Machinery, Multi-Axis Automation & Layout Optimisation</p>
         </div>
     </header>
 
-   <!-- UPDATED PORTFOLIO SECTION -->
     <section id="portfolio">
-        <div class="section-header">
-            <h2>Design Portfolio</h2>
-        </div>
-
-        <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+        <h2 style="margin-bottom: 2rem;">Design Portfolio</h2>
+        <div class="grid">
             
-            <!-- Project Card 1 -->
-            <div class="project-card" style="background-color: #f5f0e6; border: 1px solid #dcdcdc; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;">
-                <div class="project-img" style="height: 200px; background-color: #ddd; position: relative; border-bottom: 4px solid #84cc16;">
-                    <!-- Dark Banner -->
-                    <div class="banner" style="position: absolute; top: 20px; left: 0; background: #0f172a; color: white; padding: 10px 15px; width: 85%; font-size: 0.9rem; font-weight: 600;">
-                        3-Week On-Site installation For A UK-Based Company.
-                        <!-- Green Tab -->
-                        <div style="position: absolute; top: -10px; right: 10px; width: 15px; height: 20px; background: #84cc16;"></div>
+            <div class="project-card">
+                <div class="img-area">
+                    <div class="banner">3-Week On-Site installation For A UK-Based Company.
+                        <div class="green-tab"></div>
                     </div>
                 </div>
-                <div class="content" style="padding: 15px;">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #1e293b;">On-site installation</h4>
-                    <p style="margin: 0; font-size: 0.9rem; color: #475569;">Resolved technical design conflicts and supported delivery ahead of schedule.</p>
+                <div class="text-area">
+                    <h4>On-site installation</h4>
+                    <p>Resolved technical design conflicts and supported delivery ahead of schedule.</p>
                 </div>
             </div>
 
-            <!-- Project Card 2 -->
-            <div class="project-card" style="background-color: #f5f0e6; border: 1px solid #dcdcdc; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;">
-                <div class="project-img" style="height: 200px; background-color: #ddd; position: relative; border-bottom: 4px solid #84cc16;">
-                    <div class="banner" style="position: absolute; top: 20px; left: 0; background: #0f172a; color: white; padding: 10px 15px; width: 85%; font-size: 0.9rem; font-weight: 600;">
-                        DFM Implementation & Field Inspection: Industrial Rasper Assembly
-                        <div style="position: absolute; top: -10px; right: 10px; width: 15px; height: 20px; background: #84cc16;"></div>
+            <div class="project-card">
+                <div class="img-area">
+                    <div class="banner">DFM Implementation & Field Inspection: Industrial Rasper Assembly
+                        <div class="green-tab"></div>
                     </div>
                 </div>
-                <div class="content" style="padding: 15px;">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #1e293b;">Industrial rasper assembly</h4>
-                    <p style="margin: 0; font-size: 0.9rem; color: #475569;">DfM implementation, inspection feedback, and production alignment.</p>
+                <div class="text-area">
+                    <h4>Industrial rasper assembly</h4>
+                    <p>DfM implementation, inspection feedback, and production alignment.</p>
                 </div>
             </div>
 
-            <!-- Project Card 3 -->
-            <div class="project-card" style="background-color: #f5f0e6; border: 1px solid #dcdcdc; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;">
-                <div class="project-img" style="height: 200px; background-color: #ddd; position: relative; border-bottom: 4px solid #84cc16;">
-                    <div class="banner" style="position: absolute; top: 20px; left: 0; background: #0f172a; color: white; padding: 10px 15px; width: 85%; font-size: 0.9rem; font-weight: 600;">
-                        5 Ton/h Powder Plant Layout Design
-                        <div style="position: absolute; top: -10px; right: 10px; width: 15px; height: 20px; background: #84cc16;"></div>
+            <div class="project-card">
+                <div class="img-area">
+                    <div class="banner">5 Ton/h Powder Plant Layout Design
+                        <div class="green-tab"></div>
                     </div>
                 </div>
-                <div class="content" style="padding: 15px;">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #1e293b;">5 Ton/h powder plant</h4>
-                    <p style="margin: 0; font-size: 0.9rem; color: #475569;">Plant layout design for equipment positioning and process flow.</p>
+                <div class="text-area">
+                    <h4>5 Ton/h powder plant</h4>
+                    <p>Plant layout design for equipment positioning and process flow.</p>
                 </div>
             </div>
 
-            <!-- Project Card 4 -->
-            <div class="project-card" style="background-color: #f5f0e6; border: 1px solid #dcdcdc; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;">
-                <div class="project-img" style="height: 200px; background-color: #ddd; position: relative; border-bottom: 4px solid #84cc16;">
-                    <div class="banner" style="position: absolute; top: 20px; left: 0; background: #0f172a; color: white; padding: 10px 15px; width: 85%; font-size: 0.9rem; font-weight: 600;">
-                        Powder Mill Plant Layout Design.
-                        <div style="position: absolute; top: -10px; right: 10px; width: 15px; height: 20px; background: #84cc16;"></div>
+            <div class="project-card">
+                <div class="img-area">
+                    <div class="banner">Powder Mill Plant Layout Design.
+                        <div class="green-tab"></div>
                     </div>
                 </div>
-                <div class="content" style="padding: 15px;">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #1e293b;">Powder mill layout</h4>
-                    <p style="margin: 0; font-size: 0.9rem; color: #475569;">3D layout work for equipment access, assembly, and maintainability.</p>
+                <div class="text-area">
+                    <h4>Powder mill layout</h4>
+                    <p>3D layout work for equipment access, assembly, and maintainability.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section id="certifications">
-        <div class="section-header"><h2>Professional Credentials</h2></div>
-        <div class="cert-grid">
-            <div class="cert-card">
-                <h3>SOLIDWORKS Design Professional</h3>
-                <p>Verification ID: <span class="cert-id">C-MDH6SG3AUJ</span></p>
-            </div>
-            <div class="cert-card">
-                <h3>SOLIDWORKS Weldments</h3>
-                <p>Verification ID: <span class="cert-id">C-LZ2TQKC7MX</span></p>
-            </div>
-            <div class="cert-card">
-                <h3>SOLIDWORKS Sheet Metal</h3>
-                <p>Verification ID: <span class="cert-id">C-8BH5MGSAWR</span></p>
-            </div>
+    <section id="certs">
+        <h2>Professional Credentials</h2>
+        <div class="cert-grid" style="margin-top: 1rem;">
+            <div class="cert-card">SOLIDWORKS Design Professional<br>ID: C-MDH6SG3AUJ</div>
+            <div class="cert-card">SOLIDWORKS Weldments<br>ID: C-LZ2TQKC7MX</div>
+            <div class="cert-card">SOLIDWORKS Sheet Metal<br>ID: C-8BH5MGSAWR</div>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2026 Kadir Gelincik.</p>
-    </footer>
 
 </body>
 </html>
