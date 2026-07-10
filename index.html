@@ -471,8 +471,11 @@
         }
 
         .project-img {
-            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-            height: 200px;
+            background-color: var(--slate-900); /* Dark background to match your theme */
+            background-size: contain; /* This scales the image to fit entirely inside the box */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            height: 220px; /* Slightly taller to accommodate the slide aspect ratio */
             display: flex;
             align-items: center;
             justify-content: center;
