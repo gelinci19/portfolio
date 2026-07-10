@@ -91,34 +91,72 @@
         </div>
     </header>
 
+   <!-- UPDATED PORTFOLIO SECTION -->
     <section id="portfolio">
-        <div class="section-header" style="text-align: center;">
-            <h2>Verified Document Portal</h2>
-            <p>Access my design references and professional history directly.</p>
+        <div class="section-header">
+            <h2>Design Portfolio</h2>
         </div>
 
-        <div class="portfolio-grid">
-            <div class="project-card" onclick="window.open('Portfolio_KadirGelincik_.pdf', '_blank')">
-                <div class="doc-icon-area" style="border-bottom: 4px solid var(--lime-500);">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#84cc16" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
-                    <p style="color: white; margin-top: 10px; font-weight: 600;">Portfolio (PDF)</p>
+        <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+            
+            <!-- Project Card 1 -->
+            <div class="project-card" style="background-color: #f5f0e6; border: 1px solid #dcdcdc; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="project-img" style="height: 200px; background-color: #ddd; position: relative; border-bottom: 4px solid #84cc16;">
+                    <!-- Dark Banner -->
+                    <div class="banner" style="position: absolute; top: 20px; left: 0; background: #0f172a; color: white; padding: 10px 15px; width: 85%; font-size: 0.9rem; font-weight: 600;">
+                        3-Week On-Site installation For A UK-Based Company.
+                        <!-- Green Tab -->
+                        <div style="position: absolute; top: -10px; right: 10px; width: 15px; height: 20px; background: #84cc16;"></div>
+                    </div>
                 </div>
-                <div class="project-content">
-                    <h4>Engineering Portfolio</h4>
-                    <p>Click to open: Rasper assemblies, plant layouts, and DfM data.</p>
+                <div class="content" style="padding: 15px;">
+                    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #1e293b;">On-site installation</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: #475569;">Resolved technical design conflicts and supported delivery ahead of schedule.</p>
                 </div>
             </div>
 
-            <div class="project-card" onclick="window.open('001-Resume-Kadir_Gelincik-1.pdf', '_blank')">
-                <div class="doc-icon-area" style="border-bottom: 4px solid var(--blue-500);">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
-                    <p style="color: white; margin-top: 10px; font-weight: 600;">Curriculum Vitae (PDF)</p>
+            <!-- Project Card 2 -->
+            <div class="project-card" style="background-color: #f5f0e6; border: 1px solid #dcdcdc; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="project-img" style="height: 200px; background-color: #ddd; position: relative; border-bottom: 4px solid #84cc16;">
+                    <div class="banner" style="position: absolute; top: 20px; left: 0; background: #0f172a; color: white; padding: 10px 15px; width: 85%; font-size: 0.9rem; font-weight: 600;">
+                        DFM Implementation & Field Inspection: Industrial Rasper Assembly
+                        <div style="position: absolute; top: -10px; right: 10px; width: 15px; height: 20px; background: #84cc16;"></div>
+                    </div>
                 </div>
-                <div class="project-content">
-                    <h4>Official Resume</h4>
-                    <p>Click to open: Full employment history and technical proficiencies.</p>
+                <div class="content" style="padding: 15px;">
+                    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #1e293b;">Industrial rasper assembly</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: #475569;">DfM implementation, inspection feedback, and production alignment.</p>
                 </div>
             </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-card" style="background-color: #f5f0e6; border: 1px solid #dcdcdc; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="project-img" style="height: 200px; background-color: #ddd; position: relative; border-bottom: 4px solid #84cc16;">
+                    <div class="banner" style="position: absolute; top: 20px; left: 0; background: #0f172a; color: white; padding: 10px 15px; width: 85%; font-size: 0.9rem; font-weight: 600;">
+                        5 Ton/h Powder Plant Layout Design
+                        <div style="position: absolute; top: -10px; right: 10px; width: 15px; height: 20px; background: #84cc16;"></div>
+                    </div>
+                </div>
+                <div class="content" style="padding: 15px;">
+                    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #1e293b;">5 Ton/h powder plant</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: #475569;">Plant layout design for equipment positioning and process flow.</p>
+                </div>
+            </div>
+
+            <!-- Project Card 4 -->
+            <div class="project-card" style="background-color: #f5f0e6; border: 1px solid #dcdcdc; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="project-img" style="height: 200px; background-color: #ddd; position: relative; border-bottom: 4px solid #84cc16;">
+                    <div class="banner" style="position: absolute; top: 20px; left: 0; background: #0f172a; color: white; padding: 10px 15px; width: 85%; font-size: 0.9rem; font-weight: 600;">
+                        Powder Mill Plant Layout Design.
+                        <div style="position: absolute; top: -10px; right: 10px; width: 15px; height: 20px; background: #84cc16;"></div>
+                    </div>
+                </div>
+                <div class="content" style="padding: 15px;">
+                    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #1e293b;">Powder mill layout</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: #475569;">3D layout work for equipment access, assembly, and maintainability.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
