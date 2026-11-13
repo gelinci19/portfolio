@@ -1,12 +1,1 @@
-<!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <title>Redirecting...</title>
-       <meta http-equiv="refresh" content="0; url=https://gelincikk.co.uk">
-       <script>window.location.replace("https://gelincikk.co.uk");</script>
-   </head>
-   <body style="background:#090b10;color:#f8fafc;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;">
-       <p>Redirecting to <a href="https://gelincikk.co.uk" style="color:#38bdf8;">gelincikk.co.uk</a>...</p>
-   </body>
-   </html>
+gelincikk.co.uk
